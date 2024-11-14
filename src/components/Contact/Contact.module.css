@@ -1,0 +1,25 @@
+.listItemContact {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 8px;
+  border: 1px solid rgb(8, 8, 8);
+  padding: 10px;
+  margin-bottom: 5px;
+}
+
+.buttonContacts {
+  margin-left: 10px;
+  color: rgb(0, 0, 0);
+  background-color: rgb(219, 226, 226);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  padding: 5px 10px;
+  transition: background-color 0.3s;
+  border: 1px solid rgb(8, 8, 8);
+}
+
+.name {
+  display: flex;
+}
