@@ -2,6 +2,7 @@ import { ErrorMessage, Field, Form, Formik } from "formik";
 import { useDispatch } from "react-redux";
 import { LoginUserSchema } from "../../schemas";
 import { logIn } from "../../redux/auth/operations";
+import { Toaster, toast } from "react-hot-toast";
 
 import css from "./LoginForm.module.css";
 
@@ -17,6 +18,7 @@ const LoginForm = () => {
 
   return (
     <div>
+      <Toaster />
       <Formik
         initialValues={initialValues}
         validationSchema={LoginUserSchema}

@@ -8,7 +8,7 @@ const Navigation = () => {
   const isLoggedIn = useSelector(selectIsLoggedIn); // перевіряємо, чи користувач авторизований
 
   return (
-    <nav>
+    <nav className={css.nav}>
       <NavLink to="/" className={css.link}>
         Home
       </NavLink>

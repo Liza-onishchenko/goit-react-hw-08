@@ -7,10 +7,16 @@ import css from "./ContactsPage.module.css";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchContacts } from "../../redux/contacts/operations";
-import { getError, getIsLoading } from "../../redux/contacts/selectors";
+import {
+  getError,
+  getIsLoading,
+  selectorContacts,
+} from "../../redux/contacts/selectors";
 
 const ContactsPage = () => {
   const dispatch = useDispatch();
+
+  const contacts = useSelector(selectorContacts);
   const isLoading = useSelector(getIsLoading);
   const error = useSelector(getError);
 
@@ -23,9 +29,13 @@ const ContactsPage = () => {
     <div className={css.container}>
       <h1>Phonebook</h1>
       <ContactForm />
+
       <SearchBox />
       {isLoading && !error && <b>Request in progress...</b>}
       <ContactList />
+      {Array.isArray(contacts) && contacts.length === 0 && (
+        <p>There are no contacts in your phonebook yet!</p>
+      )}
     </div>
   );
 };

@@ -1,19 +1,20 @@
 import Navigation from "../Navigation/Navigation";
 import AuthNav from "../AuthNav/AuthNav";
+import UserMenu from "../UserMenu/UserMenu";
 import { useSelector } from "react-redux";
 import { selectIsLoggedIn } from "../../redux/auth/selectors";
-import UserMenu from "../UserMenu/UserMenu";
+import css from "./AppBar.module.css";
 
 //AppBar рендерить навігацію для всіх користувачів,
 //перемикається між AuthNav (для неавторизованих користувачів) і UserMenu (для авторизованих користувачів).
 const AppBar = () => {
   const isLoggedIn = useSelector(selectIsLoggedIn); // перевіряємо, чи користувач авторизований
-  console.log("isLoggedIn: ", isLoggedIn);
+
   return (
-    <nav>
+    <header className={css.header}>
       <Navigation />
       {isLoggedIn ? <UserMenu /> : <AuthNav />}
-    </nav>
+    </header>
   );
 };
 

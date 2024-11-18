@@ -2,6 +2,7 @@ import { ErrorMessage, Field, Form, Formik } from "formik";
 import { RegisterUserSchema } from "../../schemas";
 import { useDispatch } from "react-redux";
 import { register } from "../../redux/auth/operations";
+import { Toaster, toast } from "react-hot-toast";
 import css from "./RegistrationForm.module.css";
 
 const RegistrationForm = () => {
@@ -16,6 +17,7 @@ const RegistrationForm = () => {
 
   return (
     <div>
+      <Toaster />
       <Formik
         initialValues={initialValues}
         validationSchema={RegisterUserSchema}

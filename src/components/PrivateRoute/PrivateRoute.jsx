@@ -5,6 +5,7 @@ import {
   selectIsRefreshing,
 } from "../../redux/auth/selectors";
 import { Navigate } from "react-router-dom";
+
 //ком-нт який треьа відображати component,redirectTo куди переадресовувати неавторизованого користувача
 export const PrivateRoute = ({ component: Component, redirectTo = "/" }) => {
   const isLoggedIn = useSelector(selectIsLoggedIn);
@@ -12,5 +13,11 @@ export const PrivateRoute = ({ component: Component, redirectTo = "/" }) => {
 
   const shouldRedirect = !isLoggedIn && !isRefreshing;
 
-  return shouldRedirect ? <Navigate to={redirectTo} replace /> : Component;
+  return isRefreshing ? (
+    <LoadingSpinner />
+  ) : isLoggedIn ? (
+    Component
+  ) : (
+    <Navigate to={redirectTo} replace />
+  );
 };

@@ -3,7 +3,7 @@ import css from "./AuthNav.module.css";
 //навігаційне меню для неавторизованих користувачів.
 const AuthNav = () => {
   return (
-    <nav>
+    <nav className={css.nav}>
       <NavLink to="/register" className={css.link}>
         Register
       </NavLink>

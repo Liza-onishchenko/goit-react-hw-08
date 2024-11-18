@@ -1,11 +1,27 @@
-.link {
-  display: inline-block;
-  text-decoration: none;
-  padding: 12px;
-  font-weight: 700;
-  color: #2a363b;
+/* src/components/Navigation/Navigation.module.css */
+
+.nav {
+  display: flex;
+  gap: 20px;
 }
 
-.link.active {
-  color: #e84a5f;
+.link {
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 10px;
+  transition: color 0.3s ease, padding 0.2s ease;
+}
+
+.link:hover {
+  color: #ff9800; /* Змінюємо колір при наведенні */
+  padding: 10px 12px; /* Легке збільшення padding для підкреслення */
+}
+
+.navContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
 }

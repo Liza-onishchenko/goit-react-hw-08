@@ -1,5 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
+import { toast } from "react-hot-toast";
 
 export const autInstance = axios.create({
   baseURL: "https://connections-api.goit.global/",
@@ -9,29 +10,22 @@ export const autInstance = axios.create({
 });
 
 // Динамічна ф-ця для для підставки токена
-
 export const setToken = (token) => {
   autInstance.defaults.headers.common.Authorization = `Bearer ${token}`;
 };
 
 // Очищення токена
-
 export const clearToken = () => {
   autInstance.defaults.headers.common.Authorization = "";
 };
 
 //Санки, опрацьовувати мережеві запити
-
 export const register = createAsyncThunk(
   "auth/register",
   async (formData, thunkAPI) => {
-    // {formData "name", "email", "password""}
     try {
       const response = await autInstance.post("/users/signup", formData);
-      // "user": {"name": "John Taco","email": "1231241sadwda213wd@gmail.com"},"token": "" }
       setToken(response.data.token); // Збереження токена після успішної реєстрації
-      console.log("response.data: ", response.data);
-      console.log("formData:", formData);
       return response.data; // Повернення даних користувача та токенa
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -42,12 +36,9 @@ export const register = createAsyncThunk(
 export const logIn = createAsyncThunk(
   "auth/login",
   async (formData, thunkAPI) => {
-    //formData {"email": "string","password": "string"}
     try {
       const response = await autInstance.post("/users/login", formData);
-      // "user": {"name": "John Taco","email": "1231241sadwda213wd@gmail.com"},"token": ""}
       setToken(response.data.token);
-      console.log("response.data: ", response.data);
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
