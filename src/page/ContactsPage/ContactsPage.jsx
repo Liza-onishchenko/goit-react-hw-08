@@ -26,8 +26,8 @@ const ContactsPage = () => {
   }, [dispatch]);
 
   return (
-    <div className={css.container}>
-      <h1>Phonebook</h1>
+    <div className={css.pageContainer}>
+      <h1 className={css.pageTitle}>Phonebook</h1>
       <ContactForm />
 
       <SearchBox />

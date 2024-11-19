@@ -1,22 +1,55 @@
-/* src/components/UserMenu/UserMenu.module.css */
-
 .userMenu {
   display: flex;
   align-items: center;
-  gap: 20px;
+  justify-content: flex-start;
+  gap: 0;
+  margin-left: 0;
+  margin-right: 10px;
+  white-space: nowrap;
 }
-
-button {
-  padding: 8px 12px;
-  background-color: #f44336;
-  border: none;
-  color: white;
+.userMenuP {
+  font-size: 14px;
   font-weight: bold;
+  margin-right: 5px;
+  color: #160a5a;
+}
+.buttonUser {
+  padding: 6px 12px;
+  background-color: #ffffff;
+  border: none;
+  color: #ff9800;
   cursor: pointer;
+  font-size: 12px;
   border-radius: 5px;
-  transition: background-color 0.3s ease;
+  margin-left: 10px;
+}
+.buttonUser:hover {
+  background-color: #160a5a;
+  color: #ff9800;
 }
 
-button:hover {
-  background-color: #d32f2f;
+@media (min-width: 768px) {
+  .userMenu {
+    gap: 8px;
+  }
+  .userMenuP {
+    font-size: 16px;
+  }
+  .buttonUser {
+    font-size: 14px;
+    padding: 8px 16px;
+    margin-left: 8px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .userMenu {
+    gap: 10px;
+    margin-right: 15px;
+  }
+  .buttonUser {
+    font-size: 16px;
+    padding: 10px 20px;
+    margin-left: 10px;
+  }
 }

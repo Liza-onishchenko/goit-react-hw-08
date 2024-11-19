@@ -6,6 +6,13 @@ import { Toaster, toast } from "react-hot-toast";
 import { deleteContact } from "../../redux/contacts/operations";
 import { useDispatch, useSelector } from "react-redux";
 import { selectFilteredContacts } from "../../redux/filters/slice";
+import {
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogTitle,
+  Button,
+} from "@mui/material";
 
 export const ContactList = () => {
   // для контролю модального вікна
@@ -48,18 +55,48 @@ export const ContactList = () => {
             name={contact.name}
             number={contact.number}
             onDeleteContacts={openModal} // Передати як функцію
-            onEditContacts={() => openEditModal(contact)} // Передаємо функцію для редагування
           />
         ))}
       </ul>
 
       {/* Модальне вікно для підтвердження видалення */}
       {isModalOpen && (
-        <ModalDelete
-          message="Are you sure you want to delete this contact?"
-          onConfirm={onDeleteContacts} // Видалити  при підтвердженні
-          onCancel={closeModal} // Закрити модальне вікно при скасуванні
-        />
+        <Dialog open={isModalOpen} onClose={closeModal}>
+          <DialogTitle sx={{ textAlign: "center", fontWeight: "bold" }}>
+            Delete Contact
+          </DialogTitle>
+          <DialogActions sx={{ padding: "10px", justifyContent: "center" }}>
+            <Button
+              onClick={closeModal}
+              sx={{
+                backgroundColor: "#ff9800",
+                color: "white",
+                "&:hover": {
+                  backgroundColor: "#160a5a",
+                },
+                fontWeight: "bold",
+                padding: "6px 20px",
+                marginRight: "10px",
+              }}
+            >
+              Cancel
+            </Button>
+            <Button
+              onClick={onDeleteContacts}
+              sx={{
+                backgroundColor: "#f44336 ",
+                color: "white",
+                "&:hover": {
+                  backgroundColor: "#160a5a",
+                },
+                fontWeight: "bold",
+                padding: "6px 20px",
+              }}
+            >
+              Delete
+            </Button>
+          </DialogActions>
+        </Dialog>
       )}
     </div>
   );

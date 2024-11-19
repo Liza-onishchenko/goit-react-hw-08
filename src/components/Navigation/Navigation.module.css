@@ -1,10 +1,17 @@
-/* src/components/Navigation/Navigation.module.css */
-
 .nav {
   display: flex;
-  gap: 20px;
+  justify-content: flex-start;
+  align-items: center;
 }
-
+.navLinks a {
+  margin-right: 20px;
+  font-size: 18px;
+  text-decoration: none;
+  color: white;
+}
+.navLinks a:hover {
+  text-decoration: underline;
+}
 .link {
   color: white;
   text-decoration: none;
@@ -15,8 +22,7 @@
 }
 
 .link:hover {
-  color: #ff9800; /* Змінюємо колір при наведенні */
-  padding: 10px 12px; /* Легке збільшення padding для підкреслення */
+  color: #160a5a;
 }
 
 .navContainer {

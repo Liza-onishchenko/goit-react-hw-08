@@ -3,6 +3,11 @@ import { useDispatch } from "react-redux";
 import { Toaster, toast } from "react-hot-toast";
 import { addContact } from "../../redux/contacts/operations";
 import { AddContactsSchema } from "../../schemas";
+import { Button } from "@mui/material";
+import AddIcon from "@mui/icons-material/Add";
+import PersonIcon from "@mui/icons-material/Person";
+import PhoneIcon from "@mui/icons-material/Phone";
+
 import css from "./ContactForm.module.css";
 
 const ContactForm = () => {
@@ -22,7 +27,7 @@ const ContactForm = () => {
   };
 
   return (
-    <div>
+    <div className={css.contactFormContainer}>
       <Toaster />
       <Formik
         initialValues={initialValues}
@@ -31,14 +36,43 @@ const ContactForm = () => {
       >
         <Form className={css.form}>
           <label className={css.label}>
-            <span>🙍‍♂️Name:</span>
-            <Field type="text" name="name" className={css.inputContact} />
+            <span>
+              <PersonIcon
+                sx={{
+                  fontSize: "18px",
+                  color: "#ff9800",
+                  marginRight: 1,
+                }}
+              />{" "}
+              Name:
+            </span>
+            <Field
+              type="text"
+              name="name"
+              className={css.inputContact}
+              placeholder="Ivan Ivanov"
+            />
             <ErrorMessage name="name" component="span" className={css.error} />
           </label>
 
           <label className={css.label}>
-            <span>📱Number:</span>
-            <Field type="text" name="number" className={css.inputContact} />
+            <span>
+              {" "}
+              <PhoneIcon
+                sx={{
+                  fontSize: "18px",
+                  color: "#ff9800",
+                  marginRight: 1,
+                }}
+              />{" "}
+              Number:
+            </span>
+            <Field
+              type="text"
+              name="number"
+              className={css.inputContact}
+              placeholder="+380 234 567 890"
+            />
             <ErrorMessage
               name="number"
               component="span"
@@ -46,9 +80,24 @@ const ContactForm = () => {
             />
           </label>
 
-          <button type="submit" className={css.buttonForm}>
+          <Button
+            type="submit"
+            variant="contained"
+            className={css.buttonForm}
+            sx={{
+              backgroundColor: "#ff9800",
+              color: "#ffffff",
+              "&:hover": {
+                backgroundColor: "#e68900",
+                color: "#fff",
+              },
+            }}
+            onClick={() => handleSubmit}
+            startIcon={<AddIcon />}
+            fullWidth
+          >
             Add Contact
-          </button>
+          </Button>
         </Form>
       </Formik>
     </div>

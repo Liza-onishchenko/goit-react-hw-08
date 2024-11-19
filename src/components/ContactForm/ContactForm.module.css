@@ -1,31 +1,18 @@
-.form {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
+.contactFormContainer {
   width: 400px;
-  padding: 20px;
-  border-radius: 8px;
-  border: 1px solid rgb(8, 8, 8);
-}
-
-.label {
   display: flex;
-  flex-direction: column;
-  gap: 4px;
-  margin-left: 2px;
+  justify-content: center; /* Центруємо по горизонталі */
+  align-items: center; /* Центруємо по вертикалі */
 }
-
 .inputContact {
-  font-size: 16px;
-  padding: 5px 10px;
-  margin-bottom: 1px;
+  border: 1px solid #000000; /* Оранжева обводка для інпуту */
+  padding: 8px 12px; /* Відступи для комфорту */
+  border-radius: 5px; /* Заокруглені кути */
+  font-size: 14px; /* Розмір шрифту */
+  width: 100%; /* Розтягнути на всю ширину */
 }
 
-.buttonForm {
-  display: flex;
-  justify-content: center;
-  width: 150px;
-  margin: auto;
-  box-shadow: 0px 0px 1px 1px rgb(0, 0, 0);
-  border: none;
+.inputContact:focus {
+  outline: none; /* При фокусі прибираємо стандартне виділення */
+  border-color: #e68900; /* Змінюємо колір обводки при фокусі */
 }

@@ -52,7 +52,7 @@ const LoginForm = () => {
           </label>
 
           <button type="submit" className={css.buttonForm}>
-            🤷‍♂️ Sign In
+            Sign In
           </button>
         </Form>
       </Formik>

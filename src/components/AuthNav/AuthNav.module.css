@@ -1,10 +1,17 @@
-/* src/components/AuthNav/AuthNav.module.css */
-
 .nav {
   display: flex;
-  gap: 20px;
+  justify-content: flex-start;
+  align-items: center;
+}
+.authNav a {
+  font-size: 18px;
+  text-decoration: none;
+  color: white;
 }
 
+.authNav a:hover {
+  text-decoration: underline;
+}
 .link {
   color: white;
   text-decoration: none;
@@ -15,5 +22,5 @@
 }
 
 .link:hover {
-  color: #ff9800;
+  color: #000000;
 }

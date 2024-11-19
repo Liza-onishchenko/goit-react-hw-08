@@ -2,7 +2,7 @@ import { ErrorMessage, Field, Form, Formik } from "formik";
 import { RegisterUserSchema } from "../../schemas";
 import { useDispatch } from "react-redux";
 import { register } from "../../redux/auth/operations";
-import { Toaster, toast } from "react-hot-toast";
+import { Toaster } from "react-hot-toast";
 import css from "./RegistrationForm.module.css";
 
 const RegistrationForm = () => {
@@ -16,7 +16,7 @@ const RegistrationForm = () => {
   };
 
   return (
-    <div>
+    <div className={css.containerRegistr}>
       <Toaster />
       <Formik
         initialValues={initialValues}
@@ -25,7 +25,7 @@ const RegistrationForm = () => {
       >
         <Form className={css.form}>
           <label className={css.label}>
-            <span>🙍‍♂️Name:</span>
+            <span>Name:</span>
             <Field
               type="text"
               name="name"
@@ -62,7 +62,7 @@ const RegistrationForm = () => {
           </label>
 
           <button type="submit" className={css.buttonForm}>
-            🤷‍♂️ Sign Up
+            Sign Up
           </button>
         </Form>
       </Formik>

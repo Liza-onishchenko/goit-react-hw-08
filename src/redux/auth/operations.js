@@ -26,8 +26,21 @@ export const register = createAsyncThunk(
     try {
       const response = await autInstance.post("/users/signup", formData);
       setToken(response.data.token); // Збереження токена після успішної реєстрації
+
+      if (response.status === 201) {
+        toast.success("User created.");
+      }
       return response.data; // Повернення даних користувача та токенa
     } catch (error) {
+      const errorMessage = error.response
+        ? error.response.status === 400
+          ? "User creation error." // Помилка при створенні користувача
+          : error.response.status === 500
+          ? "Server error." // Серверна помилка
+          : "An unknown error occurred."
+        : "Network error. Please try again later."; // Помилка мережі
+
+      toast.error(errorMessage);
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -38,9 +51,19 @@ export const logIn = createAsyncThunk(
   async (formData, thunkAPI) => {
     try {
       const response = await autInstance.post("/users/login", formData);
-      setToken(response.data.token);
+      if (response.status === 200) {
+        setToken(response.data.token);
+        toast.success("User is logged in."); // Це має викликатися після того, як токен збережений
+      }
       return response.data;
     } catch (error) {
+      const errorMessage = error.response
+        ? error.response.status === 400
+          ? "Login error." // Помилка при логіні
+          : "An unknown error occurred."
+        : "Network error. Please try again later."; // Помилка мережі
+
+      toast.error(errorMessage);
       return thunkAPI.rejectWithValue(error.message);
     }
   }
