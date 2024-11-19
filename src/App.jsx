@@ -8,12 +8,11 @@ import { refreshUser } from "./redux/auth/operations";
 import { PrivateRoute } from "./components/PrivateRoute/PrivateRoute";
 import { RestrictedRoute } from "./components/RestrictedRoute/RestrictedRoute";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-import { Button } from "@mui/material";
-const HomePage = lazy(() => import("./page/HomePage/HomePage"));
-const ContactsPage = lazy(() => import("./page/ContactsPage/ContactsPage"));
-const LoginPage = lazy(() => import("./page/LoginPage/LoginPage"));
+const HomePage = lazy(() => import("./pages/HomePage/HomePage"));
+const ContactsPage = lazy(() => import("./pages/ContactsPage/ContactsPage"));
+const LoginPage = lazy(() => import("./pages/LoginPage/LoginPage"));
 const RegistrationPage = lazy(() =>
-  import("./page/RegistrationPage/RegistrationPage")
+  import("./pages/RegistrationPage/RegistrationPage")
 );
 const theme = createTheme({
   palette: {
